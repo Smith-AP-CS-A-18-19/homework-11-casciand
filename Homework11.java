@@ -1,3 +1,7 @@
+/*
+Andrew Cascio
+*/
+
 import java.util.ArrayList;
 
 public class Homework11 {
@@ -6,22 +10,31 @@ public class Homework11 {
 	 * variables. The constructor should create and save an
 	 * ArrayList of int values
 	 */
-	public Homework11() {
 
+private ArrayList<Integer> list;
+
+	public Homework11() {
+		list = new ArrayList<Integer>();
 	}
 
 	/* Return the stored ArrayList
 	 */
-	public ArrayList<Integer> getList() {
 
+	public ArrayList<Integer> getList() {
+		return list;
 	}
 
 	/* Fill the stored array list with integers, starting
 	 * at n and up to, but not including, m. The size of
 	 * the resultant ArrayList should be n - m.
 	 */
-	public void problem1(int n, int m) {
 
+	public void problem1(int n, int m) {
+		int max = m - n;
+		for(int i = 0; i < max; i++) {
+			list.add(n);
+			n++;
+		}
 	}
 
 	/* Remove from the stored array list all numbers that
@@ -29,8 +42,16 @@ public class Homework11 {
 	 * remove an item from the ArrayList, all elements to
 	 * the right shift their indices down one.
 	 */
-	public void problem2(int n) {
 
+	public void problem2(int n) {
+			int i = 0;
+			while(i < list.size()) {
+				if(list.get(i) % n == 0) {
+					list.remove(list.get(i));
+				} else {
+						i++;
+				}
+			}
 	}
 
 	/* Problem 3:
@@ -38,6 +59,13 @@ public class Homework11 {
 	 * class. Ensure that you create the constructor
 	 * appropriately and import java.util.ArrayList.
 	 */
+
+public class Homework11A extends Homework11 {
+
+	public Homework11A() {
+		super();
+	}
+
 
 	/* Problem 4:
 	 * Write the method problem4 in the Homework11A
@@ -47,11 +75,33 @@ public class Homework11 {
 	 * public int problem4() {
 	 */
 
+	 public int problem4() {
+		 int sum = 0;
+		 for(int i = 0; i < list.size(); i++) {
+				 sum += list.get(i);
+		 }
+		 return sum;
+	 }
+
 	/* Problem 5:
 	 * In the Homework11A class, override the problem2
 	 * method. problem2 in Homework11A should instead
 	 * only keep the elements that evenly divide n
 	 */
+
+	 public void problem2(int n) {
+ 			int i = 0;
+ 			while(i < list.size()) {
+ 				if(list.get(i) % n != 0) {
+ 					list.remove(list.get(i));
+ 				} else {
+ 						i++;
+ 				}
+ 			}
+ 	}
+
+}
+
 
 	public static void main(String[] args) {
 		boolean passed = true;
